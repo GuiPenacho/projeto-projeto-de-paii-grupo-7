@@ -201,6 +201,7 @@ public class Main {
                 exibirTabuleiro(tabuleiro);
                 System.out.println("Empate! O jogo terminou sem vencedor.");
                 jogoEmAndamento = false;
+                JGalo();
             }
 
             jogadorAtual = (jogadorAtual == 'X') ? 'O' : 'X';
@@ -285,6 +286,7 @@ public class Main {
             }
         }
         return true;
+
     }
     private static void Menu() {
         int menu = 0;
