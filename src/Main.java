@@ -24,19 +24,19 @@ public class Main {
                     System.out.println("\n");
                     for (i = 0; i < linhasFig; i++) {
 
-                        // loop para o numero de espaços
+
                         for (j = linhasFig - i; j > 1; j--) {
-                            // print dos espaços
+
                             System.out.print(" ");
                         }
 
                         //loop colunas
                         for (j = 0; j <= i; j++) {
-                            // print simbolos
+
                             System.out.print("* ");
                         }
 
-                        // fim da linha
+
                         System.out.println();
                     }
                     System.out.println("\n");
@@ -49,7 +49,7 @@ public class Main {
                                 System.out.print("X ");
                             }
                         }
-                        System.out.println(); // Nova linha após cada linha do quadrado
+                        System.out.println();
                     }
                     System.out.println("\n");
                     for (i = 0; i < linhasFig; i++) {
@@ -180,7 +180,9 @@ public class Main {
         char jogador = 'X';
 
         while (jogoEmAndamento) {
+            System.out.println("----------------------------------------------------------------------");
             mostrarTabuleiro(tabuleiro);
+            System.out.println();
             if (jogador == 'X') {
                 Jogada(tabuleiro, jogador);
             } else {
@@ -188,6 +190,7 @@ public class Main {
             }
 
             if (Vitoria(tabuleiro, jogador)) {
+                System.out.println("");
                 mostrarTabuleiro(tabuleiro);
                 if (jogador == 'X') {
                     System.out.println("Ganhas-te! Parabens.");
@@ -198,28 +201,15 @@ public class Main {
                 }
                 jogoEmAndamento = false;
             } else if (Empate(tabuleiro)) {
+                System.out.println();
                 mostrarTabuleiro(tabuleiro);
+                System.out.println();
                 System.out.println("Empataste!!! Tenta novamente.");
                 jogoEmAndamento = false;
                 JGalo();
             }
 
-            jogador = (jogador == 'X') ? 'O' : 'X';
-        }
-    }
-
-    public static void mostrarTabuleiro(char[][] tabuleiro) {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                System.out.print(tabuleiro[i][j]);
-                if (j < 2) {
-                    System.out.print(" | ");
-                }
-            }
-            System.out.println();
-            if (i < 2) {
-                System.out.println("---------");
-            }
+            jogador = (jogador == 'X') ? 'O' : 'X';// troca o char de jogador para que haja distinção
         }
     }
 
@@ -285,6 +275,20 @@ public class Main {
         }
         return true;
 
+    }
+    public static void mostrarTabuleiro(char[][] tabuleiro) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print(tabuleiro[i][j]);
+                if (j < 2) {
+                    System.out.print(" | ");
+                }
+            }
+            System.out.println();
+            if (i < 2) {
+                System.out.println("---------");
+            }
+        }
     }
     private static void Menu() {
         int menu = 0;
