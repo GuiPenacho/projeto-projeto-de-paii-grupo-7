@@ -177,38 +177,38 @@ public class Main {
         };
 
         boolean jogoEmAndamento = true;
-        char jogadorAtual = 'X';
+        char jogador = 'X';
 
         while (jogoEmAndamento) {
-            exibirTabuleiro(tabuleiro);
-            if (jogadorAtual == 'X') {
-                fazerJogada(tabuleiro, jogadorAtual);
+            mostrarTabuleiro(tabuleiro);
+            if (jogador == 'X') {
+                Jogada(tabuleiro, jogador);
             } else {
-                fazerJogadaComputador(tabuleiro, jogadorAtual);
+                JogadaComputador(tabuleiro, jogador);
             }
 
-            if (Vitoria(tabuleiro, jogadorAtual)) {
-                exibirTabuleiro(tabuleiro);
-                if (jogadorAtual == 'X') {
-                    System.out.println("O jogador " + jogadorAtual + " venceu! Parabéns!");
+            if (Vitoria(tabuleiro, jogador)) {
+                mostrarTabuleiro(tabuleiro);
+                if (jogador == 'X') {
+                    System.out.println("Ganhas-te! Parabens.");
                     Menu();
                 } else {
-                    System.out.println("O computador venceu! Melhor sorte da próxima vez.");
+                    System.out.println("Venci!!! Tenta novamente.");
                     Menu();
                 }
                 jogoEmAndamento = false;
-            } else if (verificarEmpate(tabuleiro)) {
-                exibirTabuleiro(tabuleiro);
-                System.out.println("Empate! O jogo terminou sem vencedor.");
+            } else if (Empate(tabuleiro)) {
+                mostrarTabuleiro(tabuleiro);
+                System.out.println("Empataste!!! Tenta novamente.");
                 jogoEmAndamento = false;
                 JGalo();
             }
 
-            jogadorAtual = (jogadorAtual == 'X') ? 'O' : 'X';
+            jogador = (jogador == 'X') ? 'O' : 'X';
         }
     }
 
-    public static void exibirTabuleiro(char[][] tabuleiro) {
+    public static void mostrarTabuleiro(char[][] tabuleiro) {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 System.out.print(tabuleiro[i][j]);
@@ -223,13 +223,13 @@ public class Main {
         }
     }
 
-    public static void fazerJogada(char[][] tabuleiro, char jogador) {
+    public static void Jogada(char[][] tabuleiro, char jogador) {
         try {
             Scanner scanner = new Scanner(System.in);
             int linha, coluna;
 
             do {
-                System.out.print("Jogador " + jogador + ", informe a linha (0-2) e a coluna (0-2) da sua jogada: ");
+                System.out.print("Escola uma linha e uma coluna!(Exemplo: 0 1): ");
                 linha = scanner.nextInt();
                 coluna = scanner.nextInt();
             } while (linha < 0 || linha > 2 || coluna < 0 || coluna > 2 || tabuleiro[linha][coluna] != ' ');
@@ -243,7 +243,7 @@ public class Main {
         }
     }
 
-    public static void fazerJogadaComputador(char[][] tabuleiro, char jogador) {
+    public static void JogadaComputador(char[][] tabuleiro, char jogador) {
         Random random = new Random();
         int linha, coluna;
 
@@ -251,37 +251,35 @@ public class Main {
             linha = random.nextInt(3);
             coluna = random.nextInt(3);
         } while (tabuleiro[linha][coluna] != ' ');
-
-        System.out.println("O computador escolheu a linha " + linha + " e coluna " + coluna);
         tabuleiro[linha][coluna] = jogador;
     }
 
     public static boolean Vitoria(char[][] tabuleiro, char jogador) {
         for (int i = 0; i < 3; i++) {
             if (tabuleiro[i][0] == jogador && tabuleiro[i][1] == jogador && tabuleiro[i][2] == jogador) {
-                return true; // Verificação de vitória na linha
+                return true; // Vitoria nas linhas
             }
             if (tabuleiro[0][i] == jogador && tabuleiro[1][i] == jogador && tabuleiro[2][i] == jogador) {
-                return true; // Verificação de vitória na coluna
+                return true; // Vitoria nas colunas
             }
         }
 
         if (tabuleiro[0][0] == jogador && tabuleiro[1][1] == jogador && tabuleiro[2][2] == jogador) {
-            return true; // Verificação de vitória na diagonal principal
+            return true; // vitória na diagonal da esquerda para a direita
         }
 
         if (tabuleiro[0][2] == jogador && tabuleiro[1][1] == jogador && tabuleiro[2][0] == jogador) {
-            return true; // Verificação de vitória na diagonal secundária
+            return true; // Vitória na diagonal da direita para a esquerda
         }
 
         return false;
     }
 
-    public static boolean verificarEmpate(char[][] tabuleiro) {
+    public static boolean Empate(char[][] tabuleiro) {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if (tabuleiro[i][j] == ' ') {
-                    return false; // Ainda há espaços vazios, o jogo não é um empate.
+                    return false; // Se houver espaços vazios na tabela o jogo continua
                 }
             }
         }
