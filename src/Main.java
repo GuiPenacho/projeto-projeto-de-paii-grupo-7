@@ -7,158 +7,161 @@ public class Main {
         Menu();
     }
 
-    //Funções
+    //OPÇÃO 1
 
     public static void Figuras() {
         try {
-                int linhasFig;
-                int i;
-                int j;
+            int linhasFig;
+            int i;
+            int j;
+            System.out.println("\n");
+            System.out.print("|Qual o tamanho das figuras (de 1 10)?|: ");
+            System.out.println();
+            Scanner numLinhas = new Scanner(System.in);
+            linhasFig = numLinhas.nextInt();
+
+            //1ºPADRÃO
+            if(linhasFig > 0 && linhasFig <=10) {
                 System.out.println("\n");
-                System.out.print("|Qual o tamanho das figuras (de 1 10)?|: ");
-                System.out.println();
-                Scanner numLinhas = new Scanner(System.in);
-                linhasFig = numLinhas.nextInt();
-
-                if(linhasFig > 0 && linhasFig <=10) {
-                    System.out.println("\n");
-                    for (i = 0; i < linhasFig; i++) {
+                for (i = 0; i < linhasFig; i++) {
 
 
-                        for (j = linhasFig - i; j > 1; j--) {
+                    for (j = linhasFig - i; j > 1; j--) {
 
-                            System.out.print(" ");
-                        }
-
-                        //loop colunas
-                        for (j = 0; j <= i; j++) {
-
-                            System.out.print("* ");
-                        }
-
-
-                        System.out.println();
+                        System.out.print(" ");
                     }
-                    System.out.println("\n");
 
-                    for (i = 0; i < linhasFig; i++) {
-                        for (j = 0; j < linhasFig; j++) {
-                            if ((i + j) % 2 == 0) {
-                                System.out.print("O ");
-                            } else {
-                                System.out.print("X ");
-                            }
-                        }
-                        System.out.println();
+                    //loop colunas
+                    for (j = 0; j <= i; j++) {
+
+                        System.out.print("* ");
                     }
-                    System.out.println("\n");
-                    for (i = 0; i < linhasFig; i++) {
 
-                        System.out.print("*");
 
+                    System.out.println();
+                }
+                System.out.println("\n");
+                //2ºPADRÃO
+                for (i = 0; i < linhasFig; i++) {
+                    for (j = 0; j < linhasFig; j++) {
+                        if ((i + j) % 2 == 0) {
+                            System.out.print("O ");
+                        } else {
+                            System.out.print("X ");
+                        }
                     }
                     System.out.println();
-                    for (j = 0; j < linhasFig - 2; j++) {
-                        for (i = 0; i <= linhasFig + j + 1; i++) {
+                }
+                System.out.println("\n");
+                for (i = 0; i < linhasFig; i++) {
 
-                            if (i == 0 || i == linhasFig + j) {
-                                System.out.print("*");
-                            } else {
-                                System.out.print(" ");
-                            }
+                    System.out.print("*");
+
+                }
+                System.out.println();
+                //3ºPADRÃO
+                for (j = 0; j < linhasFig - 2; j++) {
+                    for (i = 0; i <= linhasFig + j + 1; i++) {
+
+                        if (i == 0 || i == linhasFig + j) {
+                            System.out.print("*");
+                        } else {
+                            System.out.print(" ");
                         }
-                        System.out.println();
                     }
-                    for (i = 0; i < linhasFig + j + 1; i++) {
-
-                        System.out.print("*");
-
-                    }
-                    System.out.println("\n");
-                    Menu();
+                    System.out.println();
                 }
-                else{
-                    System.out.println("|OPÇÃO INVALIDA||INTRODUZA UM NUMERO DE 1 A 10!!!!|");
-                    Figuras();
+                for (i = 0; i < linhasFig + j + 1; i++) {
+
+                    System.out.print("*");
+
                 }
+                System.out.println("\n");
+                Menu();
+            }
+            else{
+                System.out.println("|OPÇÃO INVALIDA||INTRODUZA UM NUMERO DE 1 A 10!!!!|");
+                Figuras();
+            }
         }
         catch(InputMismatchException exception){  //Irá pegar o Input errado
-                System.out.println("\n  !!!!!!!!!!!  ERRO: ESSA OPÇÃO NÃO ESTÁ DISPONÍVEL  !!!!!!!!!!!");
-                System.out.println("\n");
-                Figuras();
+            System.out.println("\n  !!!!!!!!!!!  ERRO: ESSA OPÇÃO NÃO ESTÁ DISPONÍVEL  !!!!!!!!!!!");
+            System.out.println("\n");
+            Figuras();
         }
     }
 
+    //OPÇÃO 2
     public static void Triangulos() {
         try {
 
-                int linhastrig;
-                int spacing = 3;
+            int linhastrig;
+            int spacing = 3;
 
-                System.out.print("|Qual o tamanho do triângulo (de 1 10)?|: ");
-                Scanner numLinhas = new Scanner(System.in);
-                linhastrig = numLinhas.nextInt();
-                if(linhastrig > 0 && linhastrig<=10) {
+            System.out.print("|Qual o tamanho do triângulo (de 1 10)?|: ");
+            Scanner numLinhas = new Scanner(System.in);
+            linhastrig = numLinhas.nextInt();
+            if(linhastrig > 0 && linhastrig<=10) {
 
 
-                    //Print das alíneas
+                //Print das alíneas
 
-                    String a = "(a)";
-                    String b = "(b)";
-                    String c = "(c)";
-                    String d = "(d)";
+                String a = "(a)";
+                String b = "(b)";
+                String c = "(c)";
+                String d = "(d)";
 
-                    System.out.print(a + " ".repeat(linhastrig - 3 + spacing));
-                    System.out.print(b + " ".repeat(linhastrig - 3 + spacing));
-                    System.out.print(c + " ".repeat(linhastrig - 3 + spacing));
-                    System.out.print(d + " ".repeat(linhastrig - 3 + spacing));
+                System.out.print(a + " ".repeat(linhastrig - 3 + spacing));
+                System.out.print(b + " ".repeat(linhastrig - 3 + spacing));
+                System.out.print(c + " ".repeat(linhastrig - 3 + spacing));
+                System.out.print(d + " ".repeat(linhastrig - 3 + spacing));
+
+                System.out.println();
+                for (int i = 1; i <= linhastrig; i++) {
+                    // 1º triângulo
+                    for (int j = 0; j < i; j++) {
+                        System.out.print("*");
+                    }
+                    for (int j = 0; j < linhastrig - i + spacing; j++) {
+                        System.out.print(" ");
+                    }
+
+                    // 2º triângulo
+                    for (int j = 0; j < linhastrig - i + 1; j++) {
+                        System.out.print("*");
+                    }
+                    for (int j = 0; j < i - 1 + spacing; j++) {
+                        System.out.print(" ");
+                    }
+
+                    // 3º triângulo
+                    for (int j = 0; j < i - 1; j++) {
+                        System.out.print(" ");
+                    }
+                    for (int j = 0; j < linhastrig - i + 1; j++) {
+                        System.out.print("*");
+                    }
+                    for (int j = 0; j < spacing; j++) {
+                        System.out.print(" ");
+                    }
+
+                    // 4º triângulo
+                    for (int j = 0; j < linhastrig - i; j++) {
+                        System.out.print(" ");
+                    }
+                    for (int j = 0; j < i; j++) {
+                        System.out.print("*");
+                    }
 
                     System.out.println();
-                    for (int i = 1; i <= linhastrig; i++) {
-                        // Primeiro triângulo
-                        for (int j = 0; j < i; j++) {
-                            System.out.print("*");
-                        }
-                        for (int j = 0; j < linhastrig - i + spacing; j++) {
-                            System.out.print(" ");
-                        }
-
-                        // Segundo triângulo
-                        for (int j = 0; j < linhastrig - i + 1; j++) {
-                            System.out.print("*");
-                        }
-                        for (int j = 0; j < i - 1 + spacing; j++) {
-                            System.out.print(" ");
-                        }
-
-                        // Terceiro triângulo
-                        for (int j = 0; j < i - 1; j++) {
-                            System.out.print(" ");
-                        }
-                        for (int j = 0; j < linhastrig - i + 1; j++) {
-                            System.out.print("*");
-                        }
-                        for (int j = 0; j < spacing; j++) {
-                            System.out.print(" ");
-                        }
-
-                        // Quarto triângulo
-                        for (int j = 0; j < linhastrig - i; j++) {
-                            System.out.print(" ");
-                        }
-                        for (int j = 0; j < i; j++) {
-                            System.out.print("*");
-                        }
-
-                        System.out.println();
-                    }
-                    System.out.println("\n");
-                    Menu();
                 }
-                else{
-                    System.out.println("|OPÇÃO INVALIDA||INTRODUZA UM NUMERO DE 1 A 10!!!!|");
-                    Triangulos();
-                }
+                System.out.println("\n");
+                Menu();
+            }
+            else{
+                System.out.println("|OPÇÃO INVALIDA||INTRODUZA UM NUMERO DE 1 A 10!!!!|");
+                Triangulos();
+            }
         }
         catch(InputMismatchException exception){  //Irá pegar o Input errado
             System.out.println("\n  !!!!!!!!!!!  ERRO: ESSA OPÇÃO NÃO ESTÁ DISPONÍVEL  !!!!!!!!!!!");
@@ -166,7 +169,7 @@ public class Main {
             Triangulos();
         }
     }
-
+    //OPÇÃO 3
     public static void JGalo()
     {
 
@@ -190,7 +193,7 @@ public class Main {
             }
 
             if (Vitoria(tabuleiro, jogador)) {
-                System.out.println("");
+                System.out.println();
                 mostrarTabuleiro(tabuleiro);
                 if (jogador == 'X') {
                     System.out.println("Ganhas-te! Parabens.");
@@ -206,10 +209,10 @@ public class Main {
                 System.out.println();
                 System.out.println("Empataste!!! Tenta novamente.");
                 jogoEmAndamento = false;
-                JGalo();
+                Menu();
             }
 
-            jogador = (jogador == 'X') ? 'O' : 'X';// troca o char de jogador para que haja distinção
+            jogador = (jogador == 'X') ? 'O' : 'X';// troca o char de jogador para que haja distinção de quem jogou
         }
     }
 
@@ -290,6 +293,14 @@ public class Main {
             }
         }
     }
+
+    //OPÇÃO 4
+    public static void Exit() {
+        System.exit(0);
+    }
+
+
+    //MENU
     private static void Menu() {
         int menu = 0;
         do {
@@ -338,8 +349,5 @@ public class Main {
             }
         }
         while (menu<= 0 || menu >= 4);
-    }
-    public static void Exit() {
-        System.exit(0);
     }
 }

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="projeto_paii:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/projeto_paii_jar</output-path>
+    <root id="archive" name="projeto_paii.jar">
+      <element id="module-output" name="projeto_paii" />
+    </root>
+  </artifact>
+</component>
